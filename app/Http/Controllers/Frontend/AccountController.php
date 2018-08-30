@@ -40,7 +40,7 @@ class AccountController extends Controller
 	public function profile(Request $request) {
 		if($request->isMethod('POST')) {
 			/*validate data request*/
-            Validator::make($request->all(), [
+            \Validator::make($request->all(), [
                 'fullname' => 'required|max:255',
                 'tel' => 'required|max:50',
                 'wallet_btc' => 'required|max:150',
@@ -83,7 +83,7 @@ class AccountController extends Controller
     {
         if($request->isMethod("post")) { 
             /*validate data request*/
-            Validator::make($request->all(), [
+            \Validator::make($request->all(), [
                 'oldPass' => 'required',
                 'newPass' => 'required',
                 'newPass_confirmation' => 'required | same:newPass'
@@ -92,7 +92,7 @@ class AccountController extends Controller
                 'newPass' => 'New password',
                 'newPass_confirmation' => 'Confirm password'
             ])->validate();
-            if(!Hash::check($request->oldPass, Auth::guard('web')->user()->password)) {
+            if(!\Hash::check($request->oldPass, Auth::guard('web')->user()->password)) {
                 return redirect()->route('frontend.account.vChangePass')->withErrors(['oldPass' => 'Current password is not correct']);
             }
             $customer = Auth::guard('web')->user();

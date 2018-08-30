@@ -30,8 +30,8 @@
 					</div>							
 				</div><!-- Name -->
 				@if(\Session::has('msg_changePass'))
-				<div class="alert alert-success" role="alert">
-					<p>{{\Session::get('msg_changePass')}}</p>
+				<div class="alert alert-success text-center" role="alert">
+					<p><strong>{{\Session::get('msg_changePass')}}</strong></p>
 				</div>
 				@endif
 				<!-- Form Begins -->
@@ -51,7 +51,7 @@
 					</div>
 					<div class="input-text form-group {{$errors->has('newPass_confirmation') ? 'has-error' : ''}}">
 						<label class="required">Confirm password</label>
-						<input type="text" name="newPass_confirmation" class="input-name form-control" placeholder="Confirm password" required maxlength="255" />
+						<input type="password" name="newPass_confirmation" class="input-name form-control" placeholder="Confirm password" required maxlength="255" />
 						<span class="help-block">{{$errors->first('newPass_confirmation')}}</span>
 					</div>
 					<!-- Button -->
